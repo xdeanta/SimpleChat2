@@ -12,8 +12,8 @@ public class User {
 
     public User(String usr, ServiceSocket s){
         username=usr;
-        cObjInput=s.getObjInputStream();
-        cObjOutput=s.getObjOutputStream();
+        //cObjInput=s.getObjInputStream();
+       // cObjOutput=s.getObjOutputStream();
         cDataInput=s.getDataInputStream();
         cDataOutput=s.getDataOutputStream();
     }
@@ -42,6 +42,7 @@ public class User {
 
     public void sendString(String str){
         try {
+            System.out.println("sendString: " +str);
             cDataOutput.writeUTF(str);
         }catch (IOException e){
             e.printStackTrace();
@@ -52,6 +53,7 @@ public class User {
         String str;
         try {
             str=cDataInput.readUTF();
+            System.out.println("receiveString: " +str);
         }catch (IOException e){
             e.printStackTrace();
             str=null;

@@ -15,12 +15,14 @@ public class Channel {
 
     public synchronized void postMessage(String msg){
         messages.add(msg);
+        System.out.println("Messages: " + messages);
     }
 
     public void broadcastMessage(){
         User u;
         for(int i=0;i<users.size();i++){
             u=users.get(i);
+            System.out.println("broadcastMessage, User:" + u.getUsername());
             u.sendString(messages.get(messages.size()-1));
         }
     }

@@ -18,12 +18,19 @@ public class ServerListener extends Thread{
     public void run(){
         User u;
         UserHandler uh;
+        String usr;
         while(true){
+            System.out.println("Escuchando");
             socket.acceptConnection();
+            System.out.println("Conexion aceptada");
             try {
-                u = new User(socket.getDataInputStream().readUTF(), socket);
+                System.out.println("esperando nombre");
+                usr=socket.getDataInputStream().readUTF();
+                System.out.println("Usuario: " +usr);
+                u = new User(usr, socket);
                 joinUser(u);
                 uh=new UserHandler(u, ch,socket);
+                uh.start();
             }catch (IOException e){
                 e.printStackTrace();
                 this.interrupt();
