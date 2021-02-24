@@ -43,4 +43,21 @@ public class ClientSocket {
     public DataOutputStream getDataOutputStream(){
         return new DataOutputStream(os);
     }
+
+    public void closeSocket(){
+        try{
+            socket.close();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void getIO(){
+        try {
+            is = socket.getInputStream();
+            os = socket.getOutputStream();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
 }

@@ -3,7 +3,7 @@ package com.simplechat2.client;
 import java.io.IOException;
 
 public class Listener extends Thread{
-    ClientSocket csocket;
+    private ClientSocket csocket;
     public Listener(ClientSocket socket){
         csocket=socket;
     }
