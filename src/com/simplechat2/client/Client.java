@@ -11,15 +11,15 @@ public class Client {
 
     public Client(String usr, ClientSocket s){
         username=usr;
-        System.out.println("despues usuario");
+        //System.out.println("despues usuario");
         //cObjInput=s.getObjInputStream();
-        System.out.println("despues objectinput");
+        //System.out.println("despues objectinput");
         //cObjOutput=s.getObjOutputStream();
-        System.out.println("despues objectoutput");
+        //System.out.println("despues objectoutput");
         cDataInput=s.getDataInputStream();
-        System.out.println("despues datainput");
+        //System.out.println("despues datainput");
         cDataOutput=s.getDataOutputStream();
-        System.out.println("despues dataoutput");
+        //System.out.println("despues dataoutput");
     }
 
     public void sendObject(Object o){

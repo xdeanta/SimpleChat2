@@ -26,7 +26,7 @@ public class Main {
             ls=new Listener(s);
             ls.start();
             while(true){
-                System.out.println("Dentro while");
+                //System.out.println("Dentro while");
                 str = sc.nextLine();
                 if(str.equals("bye")){
                     break;
