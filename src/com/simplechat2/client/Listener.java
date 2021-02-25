@@ -8,9 +8,15 @@ public class Listener extends Thread{
         csocket=socket;
     }
     public void run(){
+        String mensaje;
         try{
             while(true){
-                System.out.println(csocket.getDataInputStream().readUTF());
+                mensaje = csocket.getDataInputStream().readUTF();
+                if(mensaje.equals("bye")){
+                    Thread.currentThread().interrupt();
+                    break;
+                }
+
             }
         }catch (IOException e){
             e.printStackTrace();

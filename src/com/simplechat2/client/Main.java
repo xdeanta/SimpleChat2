@@ -28,10 +28,10 @@ public class Main {
             while(true){
                 //System.out.println("Dentro while");
                 str = sc.nextLine();
+                s.getDataOutputStream().writeUTF(str);
                 if(str.equals("bye")){
                     break;
                 }
-                s.getDataOutputStream().writeUTF(str);
             }
             s.closeSocket();
         }catch (IOException e){

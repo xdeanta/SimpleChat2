@@ -30,5 +30,6 @@ public class UserHandler extends Thread{
                 break;
             }
         }
+        Thread.currentThread().interrupt();
     }
 }
