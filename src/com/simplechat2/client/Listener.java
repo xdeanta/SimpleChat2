@@ -16,7 +16,7 @@ public class Listener extends Thread{
                     Thread.currentThread().interrupt();
                     break;
                 }
-
+                System.out.println(mensaje);
             }
         }catch (IOException e){
             e.printStackTrace();

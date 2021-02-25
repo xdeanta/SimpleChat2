@@ -30,12 +30,15 @@ public class Main {
                 str = sc.nextLine();
                 s.getDataOutputStream().writeUTF(str);
                 if(str.equals("bye")){
+                    ls.join();
                     break;
                 }
             }
             s.closeSocket();
         }catch (IOException e){
             e.printStackTrace();
+        }catch (InterruptedException e2){
+            System.out.println("Listener cerrado");
         }
 
     }
