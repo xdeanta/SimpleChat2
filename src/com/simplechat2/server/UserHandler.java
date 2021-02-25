@@ -25,11 +25,11 @@ public class UserHandler extends Thread{
     public void run(){
         while(true){
             if(sendMessage()){
-                ch.removeUser(u);
-                socket.closeSocket();
                 break;
             }
         }
-        Thread.currentThread().interrupt();
+        ch.removeUser(u);
+        socket.closeCSocket();
+        //Thread.currentThread().interrupt();
     }
 }

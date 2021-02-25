@@ -1,6 +1,7 @@
 package com.simplechat2.server;
 
 import java.io.IOException;
+import java.net.SocketException;
 
 public class ServerListener extends Thread{
     private ServiceSocket socket;
@@ -31,9 +32,10 @@ public class ServerListener extends Thread{
                 joinUser(u);
                 uh=new UserHandler(u, ch,socket);
                 uh.start();
+                usr=null;
+                uh=null;
             }catch (IOException e){
                 e.printStackTrace();
-                this.interrupt();
             }
         }
         //socket.closeSocket();

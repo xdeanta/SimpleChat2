@@ -14,12 +14,12 @@ public class Server {
         ServerListener sl = new ServerListener(ss,ch);
         sl.start();
         /*Scanner sc = new Scanner(System.in);
-        String str;
+        String str;*/
         try{
             sl.join();
         }catch (InterruptedException e){
             e.printStackTrace();
-        }*/
+        }
 
     }
 }

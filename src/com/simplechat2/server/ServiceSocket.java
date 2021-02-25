@@ -62,4 +62,12 @@ public class ServiceSocket {
             e.printStackTrace();
         }
     }
+
+    public void closeCSocket(){
+        try {
+            socket.close();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
 }
