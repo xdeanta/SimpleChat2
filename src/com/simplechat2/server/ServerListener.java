@@ -38,6 +38,9 @@ public class ServerListener extends Thread{
                     joinUser(u);
                     uh = new UserHandler(u, ch, socket);
                     uh.start();
+                }else{
+                    System.out.println("Conexion rechazada");
+                    socket.closeCSocket();
                 }
                 usr=null;
                 uh=null;
