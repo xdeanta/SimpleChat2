@@ -5,13 +5,15 @@ import java.io.*;
 
 public class User {
     private String username;
+    private String passwd;
     private ObjectInputStream cObjInput;
     private ObjectOutputStream cObjOutput;
     private DataInputStream cDataInput;
     private DataOutputStream cDataOutput;
 
-    public User(String usr, ServiceSocket s){
+    public User(String usr,String pw, ServiceSocket s){
         username=usr;
+        passwd=pw;
         //cObjInput=s.getObjInputStream();
        // cObjOutput=s.getObjOutputStream();
         cDataInput=s.getDataInputStream();
@@ -67,5 +69,13 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getPasswd() {
+        return passwd;
+    }
+
+    public void setPasswd(String passwd) {
+        this.passwd = passwd;
     }
 }

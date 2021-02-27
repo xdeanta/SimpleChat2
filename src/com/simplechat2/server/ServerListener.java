@@ -19,7 +19,8 @@ public class ServerListener extends Thread{
     public void run(){
         User u;
         UserHandler uh;
-        String usr;
+        String usr, pass;
+        ClientAuth ca;
         while(true){
             System.out.println("Escuchando");
             socket.acceptConnection();
@@ -28,10 +29,16 @@ public class ServerListener extends Thread{
                 System.out.println("esperando nombre");
                 usr=socket.getDataInputStream().readUTF();
                 System.out.println("Usuario: " +usr);
-                u = new User(usr, socket);
-                joinUser(u);
-                uh=new UserHandler(u, ch,socket);
-                uh.start();
+                pass=socket.getDataInputStream().readUTF();
+                System.out.println("contraseña: " +pass);
+                u = new User(usr,pass, socket);
+                ca = new ClientAuth(u);
+                ca.checkUser();
+                if(ca.getAccess()) {
+                    joinUser(u);
+                    uh = new UserHandler(u, ch, socket);
+                    uh.start();
+                }
                 usr=null;
                 uh=null;
             }catch (IOException e){

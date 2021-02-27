@@ -12,21 +12,25 @@ public class Main {
         ClientSocket s = new ClientSocket("192.168.56.2",7500);
         s.getIO();
         Scanner sc = new Scanner(System.in);
-        String user;
+        String user, passwd;
         Client c;
         Listener ls;
         String str;
         try {
-            /*System.out.println("Nombre de usuario:");
+            System.out.println("Nombre de usuario:");
             user = sc.nextLine();
-            System.out.println("Creando cliente, usuario: " + user);*/
-            c = new Client("xavier",s);
+            System.out.println("Contraseña:");
+            passwd = sc.nextLine();
+            //System.out.println("Creando cliente, usuario: " + user);
+            c = new Client(user,passwd,s);
             System.out.println("usuario: " + c.getUsername());
+            //s.getObjOutputStream().writeObject(c);
             s.getDataOutputStream().writeUTF(c.getUsername());
+            s.getDataOutputStream().writeUTF(c.getPassword());
             ls=new Listener(s);
             ls.start();
             while(true){
-                //System.out.println("Dentro while");
+                System.out.print(c.getUsername() + ">");
                 str = sc.nextLine();
                 s.getDataOutputStream().writeUTF(str);
                 if(str.equals("bye")){

@@ -13,7 +13,6 @@ public class Listener extends Thread{
             while(true){
                 mensaje = csocket.getDataInputStream().readUTF();
                 if(mensaje.equals("bye")){
-                    Thread.currentThread().interrupt();
                     break;
                 }
                 System.out.println(mensaje);

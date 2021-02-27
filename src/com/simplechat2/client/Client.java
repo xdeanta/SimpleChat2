@@ -4,21 +4,23 @@ import java.io.*;
 
 public class Client {
     private String username;
+    private String password;
     private ObjectInputStream cObjInput;
     private ObjectOutputStream cObjOutput;
     private DataInputStream cDataInput;
     private DataOutputStream cDataOutput;
 
-    public Client(String usr, ClientSocket s){
+    public Client(String usr,String pw, ClientSocket s){
         username=usr;
+        password=pw;
         //System.out.println("despues usuario");
-        //cObjInput=s.getObjInputStream();
+        cObjInput=s.getObjInputStream();
         //System.out.println("despues objectinput");
-        //cObjOutput=s.getObjOutputStream();
+        cObjOutput=s.getObjOutputStream();
         //System.out.println("despues objectoutput");
-        cDataInput=s.getDataInputStream();
+        //cDataInput=s.getDataInputStream();
         //System.out.println("despues datainput");
-        cDataOutput=s.getDataOutputStream();
+        //cDataOutput=s.getDataOutputStream();
         //System.out.println("despues dataoutput");
     }
 
@@ -69,6 +71,14 @@ public class Client {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
 
