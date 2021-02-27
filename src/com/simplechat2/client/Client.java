@@ -14,13 +14,13 @@ public class Client {
         username=usr;
         password=pw;
         //System.out.println("despues usuario");
-        cObjInput=s.getObjInputStream();
+        //cObjInput=s.getObjInputStream();
         //System.out.println("despues objectinput");
-        cObjOutput=s.getObjOutputStream();
+        //cObjOutput=s.getObjOutputStream();
         //System.out.println("despues objectoutput");
-        //cDataInput=s.getDataInputStream();
+        cDataInput=s.getDataInputStream();
         //System.out.println("despues datainput");
-        //cDataOutput=s.getDataOutputStream();
+        cDataOutput=s.getDataOutputStream();
         //System.out.println("despues dataoutput");
     }
 

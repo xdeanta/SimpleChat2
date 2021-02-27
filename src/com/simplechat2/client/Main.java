@@ -23,7 +23,7 @@ public class Main {
             passwd = sc.nextLine();
             //System.out.println("Creando cliente, usuario: " + user);
             c = new Client(user,passwd,s);
-            System.out.println("usuario: " + c.getUsername());
+            //System.out.println("usuario: " + c.getUsername());
             //s.getObjOutputStream().writeObject(c);
             s.getDataOutputStream().writeUTF(c.getUsername());
             s.getDataOutputStream().writeUTF(c.getPassword());
