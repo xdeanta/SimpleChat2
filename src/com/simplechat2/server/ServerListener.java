@@ -42,10 +42,10 @@ public class ServerListener extends Thread{
                     uh.start();
                 }else{
                     answer=false;
+                    socket.getDataOutputStream().writeBoolean(answer);
                     System.out.println("Conexion rechazada");
                     socket.closeCSocket();
                 }
-                socket.getDataOutputStream().writeBoolean(answer);
                 usr=null;
                 uh=null;
             }catch (IOException e){
