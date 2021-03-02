@@ -16,6 +16,7 @@ public class Main {
         Client c;
         Listener ls;
         String str;
+        boolean connected;
         try {
             System.out.println("Nombre de usuario:");
             user = sc.nextLine();
@@ -27,16 +28,21 @@ public class Main {
             //s.getObjOutputStream().writeObject(c);
             s.getDataOutputStream().writeUTF(c.getUsername());
             s.getDataOutputStream().writeUTF(c.getPassword());
-            ls=new Listener(s);
-            ls.start();
-            while(true){
-                System.out.print(c.getUsername() + ">");
-                str = sc.nextLine();
-                s.getDataOutputStream().writeUTF(str);
-                if(str.equals("bye")){
-                    ls.join();
-                    break;
+            connected=s.getDataInputStream().readBoolean();
+            if(connected) {
+                ls = new Listener(s);
+                ls.start();
+                while (true) {
+                    System.out.print(c.getUsername() + ">");
+                    str = sc.nextLine();
+                    s.getDataOutputStream().writeUTF(str);
+                    if (str.equals("bye")) {
+                        ls.join();
+                        break;
+                    }
                 }
+            }else{
+                System.out.println("La conexion fue rechazada");
             }
             s.closeSocket();
         }catch (IOException e){

@@ -21,6 +21,7 @@ public class ServerListener extends Thread{
         UserHandler uh;
         String usr, pass;
         ClientAuth ca;
+        boolean answer;
         while(true){
             System.out.println("Escuchando");
             socket.acceptConnection();
@@ -35,13 +36,16 @@ public class ServerListener extends Thread{
                 ca = new ClientAuth(u);
                 ca.checkUser();
                 if(ca.getAccess()) {
+                    answer=true;
                     joinUser(u);
                     uh = new UserHandler(u, ch, socket);
                     uh.start();
                 }else{
+                    answer=false;
                     System.out.println("Conexion rechazada");
                     socket.closeCSocket();
                 }
+                socket.getDataOutputStream().writeBoolean(answer);
                 usr=null;
                 uh=null;
             }catch (IOException e){
