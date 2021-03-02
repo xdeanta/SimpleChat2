@@ -29,7 +29,7 @@ public class UserHandler extends Thread{
             }
         }
         ch.removeUser(u);
-        socket.closeCSocket();
+        //socket.closeCSocket();
         //Thread.currentThread().interrupt();
     }
 }
