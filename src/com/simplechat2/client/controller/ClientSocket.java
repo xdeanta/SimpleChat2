@@ -3,6 +3,7 @@ package com.simplechat2.client.controller;
 import com.simplechat2.common.SocketHandler;
 
 import java.io.IOException;
+import java.net.InetSocketAddress;
 import java.net.Socket;
 
 public class ClientSocket extends SocketHandler {
@@ -10,7 +11,8 @@ public class ClientSocket extends SocketHandler {
 
     private ClientSocket(String ip, int port){
         socket = new Socket();
-        getAddress(ip,port);
+        addr = new InetSocketAddress(ip,port);
+        //getAddress(ip,port);
         try {
             socket.connect(addr);
         }catch (IOException e){

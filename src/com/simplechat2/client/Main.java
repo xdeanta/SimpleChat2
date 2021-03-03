@@ -19,7 +19,7 @@ public class Main {
         /*System.out.println("Usuario: " + usr);
         System.out.println("Contraseña: " + pass);*/
         c = new CClient(usr,pass);
-        IOHandler.sendObject(c);
+        //IOHandler.sendObject(c);
         connected=(Boolean) IOHandler.ReceiveObject();
         if(connected){
             System.out.println("Conectado");
