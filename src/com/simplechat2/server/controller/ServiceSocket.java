@@ -32,6 +32,9 @@ public class ServiceSocket extends SocketHandler {
             socket = sSocket.accept();
             is = socket.getInputStream();
             os = socket.getOutputStream();
+            if(is == null || os == null){
+                System.out.println("IO es nulo");
+            }
         }catch (IOException e){
             e.printStackTrace();
         }
