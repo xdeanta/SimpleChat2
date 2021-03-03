@@ -8,16 +8,16 @@ public class User {
     private String passwd;
     private ObjectInputStream cObjInput;
     private ObjectOutputStream cObjOutput;
-    private DataInputStream cDataInput;
-    private DataOutputStream cDataOutput;
+    //private DataInputStream cDataInput;
+    //private DataOutputStream cDataOutput;
 
     public User(String usr,String pw, ServiceSocket s){
         username=usr;
         passwd=pw;
-        //cObjInput=s.getObjInputStream();
-       // cObjOutput=s.getObjOutputStream();
-        cDataInput=s.getDataInputStream();
-        cDataOutput=s.getDataOutputStream();
+        cObjInput=s.getObjInputStream();
+       cObjOutput=s.getObjOutputStream();
+        //cDataInput=s.getDataInputStream();
+        //cDataOutput=s.getDataOutputStream();
     }
 
     public void sendObject(Object o){
@@ -45,7 +45,7 @@ public class User {
     public void sendString(String str){
         try {
             System.out.println("sendString: " +str);
-            cDataOutput.writeUTF(str);
+            cObjOutput.writeUTF(str);
         }catch (IOException e){
             e.printStackTrace();
         }
@@ -54,7 +54,7 @@ public class User {
     public String receiveString(){
         String str;
         try {
-            str=cDataInput.readUTF();
+            str=cObjInput.readUTF();
             System.out.println("receiveString: " +str);
         }catch (IOException e){
             e.printStackTrace();

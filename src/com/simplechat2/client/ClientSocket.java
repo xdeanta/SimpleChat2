@@ -37,12 +37,12 @@ public class ClientSocket {
         }
     }
 
-    public DataInputStream getDataInputStream(){
+    /*public DataInputStream getDataInputStream(){
         return new DataInputStream(is);
     }
     public DataOutputStream getDataOutputStream(){
         return new DataOutputStream(os);
-    }
+    }*/
 
     public void closeSocket(){
         try{

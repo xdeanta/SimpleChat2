@@ -11,7 +11,7 @@ public class Listener extends Thread{
         String mensaje;
         try{
             while(true){
-                mensaje = csocket.getDataInputStream().readUTF();
+                mensaje = csocket.getObjInputStream().readUTF();
                 if(mensaje.equals("bye")){
                     break;
                 }

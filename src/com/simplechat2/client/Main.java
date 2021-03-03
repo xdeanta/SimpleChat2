@@ -26,16 +26,16 @@ public class Main {
             c = new Client(user,passwd,s);
             //System.out.println("usuario: " + c.getUsername());
             //s.getObjOutputStream().writeObject(c);
-            s.getDataOutputStream().writeUTF(c.getUsername());
-            s.getDataOutputStream().writeUTF(c.getPassword());
-            connected=s.getDataInputStream().readBoolean();
+            s.getObjOutputStream().writeUTF(c.getUsername());
+            s.getObjOutputStream().writeUTF(c.getPassword());
+            connected=s.getObjInputStream().readBoolean();
             if(connected) {
                 ls = new Listener(s);
                 ls.start();
                 while (true) {
                     System.out.print(c.getUsername() + ">");
                     str = sc.nextLine();
-                    s.getDataOutputStream().writeUTF(str);
+                    s.getObjOutputStream().writeUTF(str);
                     if (str.equals("bye")) {
                         ls.join();
                         break;

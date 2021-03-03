@@ -28,9 +28,9 @@ public class ServerListener extends Thread{
             System.out.println("Conexion aceptada");
             try {
                 System.out.println("esperando nombre");
-                usr=socket.getDataInputStream().readUTF();
+                usr=socket.getObjInputStream().readUTF();
                 System.out.println("Usuario: " +usr);
-                pass=socket.getDataInputStream().readUTF();
+                pass=socket.getObjInputStream().readUTF();
                 System.out.println("contraseña: " +pass);
                 u = new User(usr,pass, socket);
                 ca = new ClientAuth(u);
@@ -42,7 +42,7 @@ public class ServerListener extends Thread{
                     uh.start();
                 }else{
                     answer=false;
-                    socket.getDataOutputStream().writeBoolean(answer);
+                    socket.getObjOutputStream().writeBoolean(answer);
                     System.out.println("Conexion rechazada");
                     socket.closeCSocket();
                 }
