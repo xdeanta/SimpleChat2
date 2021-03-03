@@ -1,28 +1,27 @@
-package com.simplechat2.server;
+package com.simplechat2.server.controller;
+
+import com.simplechat2.common.Client;
 
 import java.sql.*;
 
-public class ClientAuth{
+public class ClientAuth {
     private Connection conx;
-    private User u;
-    private boolean access;
+    private static final String url = "jdbc:sqlite:/home/xavier/db/users.db";
 
-    public ClientAuth(User u){
-        access = false;
-        String url = "jdbc:sqlite:/home/xavier/db/users.db";
-        this.u=u;
-        try {
+    public ClientAuth(){
+        try{
             conx = DriverManager.getConnection(url);
         }catch (SQLException e){
             e.printStackTrace();
         }
     }
 
-    public void checkUser(){
+    public boolean validateUser(Client c){
+        boolean access=false;
         try {
             PreparedStatement pst = conx.prepareStatement("select id from users where username=? and password=?");
-            pst.setString(1,u.getUsername());
-            pst.setString(2,u.getPasswd());
+            pst.setString(1,c.getUsername());
+            pst.setString(2,c.getPassword());
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
                 access = true;
@@ -31,9 +30,6 @@ public class ClientAuth{
         }catch (SQLException e){
             e.printStackTrace();
         }
-    }
-
-    public boolean getAccess(){
         return access;
     }
 }
