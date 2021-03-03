@@ -11,6 +11,8 @@ public class ServiceSocket {
     private InetSocketAddress addr;
     private InputStream is;
     private OutputStream os;
+    private ObjectInputStream ois;
+    private ObjectOutputStream oos;
 
     public ServiceSocket(String ip, int port){
         addr=new InetSocketAddress(ip,port);
@@ -27,24 +29,22 @@ public class ServiceSocket {
             socket = sSocket.accept();
             is=socket.getInputStream();
             os=socket.getOutputStream();
+            try{
+                ois = new ObjectInputStream(is);
+                oos = new ObjectOutputStream(os);
+            }catch (IOException e){
+                e.printStackTrace();
+            }
         }catch (IOException e){
             e.printStackTrace();
         }
     }
 
     public ObjectInputStream getObjInputStream(){
-        try{
-            return new ObjectInputStream(is);
-        }catch (IOException e){
-            return null;
-        }
+        return ois;
     }
     public ObjectOutputStream getObjOutputStream(){
-        try{
-            return new ObjectOutputStream(os);
-        }catch (IOException e){
-            return null;
-        }
+        return oos;
     }
 
     /*public DataInputStream getDataInputStream(){
