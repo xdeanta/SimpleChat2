@@ -9,8 +9,8 @@ public class IOStream {
 
     private IOStream(InputStream in, OutputStream out){
         try{
-            ois = new ObjectInputStream(in);
             oos = new ObjectOutputStream(out);
+            ois = new ObjectInputStream(in);
         }catch (IOException e){
             e.printStackTrace();
         }

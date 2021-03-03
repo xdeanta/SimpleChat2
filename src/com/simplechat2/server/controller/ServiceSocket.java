@@ -30,8 +30,8 @@ public class ServiceSocket extends SocketHandler {
     public void acceptConnection(){
         try {
             socket = sSocket.accept();
-            is = socket.getInputStream();
             os = socket.getOutputStream();
+            is = socket.getInputStream();
             if(is == null || os == null){
                 System.out.println("IO es nulo");
             }

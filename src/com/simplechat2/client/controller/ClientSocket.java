@@ -15,6 +15,8 @@ public class ClientSocket extends SocketHandler {
         //getAddress(ip,port);
         try {
             socket.connect(addr);
+            os = socket.getOutputStream();
+            is = socket.getInputStream();
         }catch (IOException e){
             e.printStackTrace();
         }
