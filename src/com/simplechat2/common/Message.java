@@ -3,24 +3,32 @@ package com.simplechat2.common;
 import java.io.Serializable;
 
 public class Message implements Serializable {
-    protected String username;
-    protected String message;
+    private int id;
+    private String username;
+    private String message;
 
-    public Message(Client c, String msg){
-        username=c.getUsername();
-        message=msg;
+    public Message(String username, String message) {
+        this.username = username;
+        this.message = message;
     }
 
     public String getUsername() {
         return username;
     }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public String getMessage() {
         return message;
     }
 
-    @Override
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
     public String toString(){
-        return "<" + username +">: " + message;
+        return "<" + username + ">: " + message;
     }
 }
