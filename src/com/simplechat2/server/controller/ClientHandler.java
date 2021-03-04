@@ -38,6 +38,6 @@ public class ClientHandler extends Thread{
         while(!disconnect){
             sendMessage();
         }
-        handler.closeStream();
+        //handler.closeStream();
     }
 }

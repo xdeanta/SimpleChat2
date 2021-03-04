@@ -5,9 +5,9 @@ import java.io.*;
 public class IOStream {
     private static ObjectInputStream ois;
     private static ObjectOutputStream oos;
-    private static IOStream stream;
+    //private static IOStream stream;
 
-    private IOStream(InputStream in, OutputStream out){
+    public IOStream(InputStream in, OutputStream out){
         try{
             oos = new ObjectOutputStream(out);
             ois = new ObjectInputStream(in);
@@ -16,12 +16,12 @@ public class IOStream {
         }
     }
 
-    public static IOStream createIO(InputStream in, OutputStream out){
+    /*public static IOStream createIO(InputStream in, OutputStream out){
         if(stream == null){
             stream = new IOStream(in,out);
         }
         return stream;
-    }
+    }*/
 
     public void sendObject(Object o){
         try {

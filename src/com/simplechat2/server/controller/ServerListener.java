@@ -16,14 +16,16 @@ public class ServerListener extends Thread{
 
     public void run(){
         Client c;
-        ClientAuth ca = new ClientAuth();
+        ClientAuth ca;
         ClientHandler clh;
         boolean connected = false;
         while (true){
             System.out.println("Escuchando...");
             ss.acceptConnection();
-            handler=IOStream.createIO(ss.getIs(),ss.getOs());
+            //handler=IOStream.createIO(ss.getIs(),ss.getOs());
+            handler= new IOStream(ss.getIs(),ss.getOs());
             c=(Client) handler.ReceiveObject();
+            ca = new ClientAuth();
             connected=ca.validateUser(c);
             if(connected){
                 System.out.println("Cliente conectado");

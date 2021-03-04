@@ -10,7 +10,8 @@ public class Listener extends Thread{
     private IOStream input;
 
     public Listener(InputStream in, OutputStream out){
-        input = IOStream.createIO(in,out);
+        //input = IOStream.createIO(in,out);
+        input = new IOStream(in,out);
     }
 
     public void run(){
