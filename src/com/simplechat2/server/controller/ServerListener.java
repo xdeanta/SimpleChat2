@@ -10,7 +10,7 @@ public class ServerListener extends Thread{
     private Channel ch;
 
     public ServerListener(String ip, int port, Channel ch){
-        ss = ServiceSocket.getServiceSocket(ip,port);
+        ss = new ServiceSocket(ip,port);
         this.ch=ch;
     }
 
@@ -34,8 +34,13 @@ public class ServerListener extends Thread{
                 clh.start();
             }else{
                 System.out.println("Conexion rechazada");
+                ss.closeSocket();
             }
             handler.sendObject(connected);
+            clh = null;
+            c=null;
+            handler=null;
+            ca=null;
         }
     }
 }

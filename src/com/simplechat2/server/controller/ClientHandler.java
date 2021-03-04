@@ -34,7 +34,7 @@ public class ClientHandler extends Thread{
             sendMessage();
         }
         ch.removeUser(client);
-        //handler.closeStream();
+        handler.closeStream();
 
     }
 

@@ -9,7 +9,7 @@ import java.net.ServerSocket;
 public class ServiceSocket extends SocketHandler {
     private static ServiceSocket ss;
 
-    private ServiceSocket(String ip, int port){
+    public ServiceSocket(String ip, int port){
         try {
             sSocket = new ServerSocket();
             addr = new InetSocketAddress(ip,port);
@@ -20,12 +20,12 @@ public class ServiceSocket extends SocketHandler {
         }
     }
 
-    public static ServiceSocket getServiceSocket(String ip, int port){
+    /*public static ServiceSocket getServiceSocket(String ip, int port){
         if(ss == null){
             ss = new ServiceSocket(ip,port);
         }
         return ss;
-    }
+    }*/
 
     public void acceptConnection(){
         try {
