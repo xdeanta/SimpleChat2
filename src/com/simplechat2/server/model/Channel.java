@@ -20,6 +20,7 @@ public class Channel {
 
         clients.add(ch);
         System.out.println(clients);
+
     }
 
     public void broadcastMessage(){

@@ -39,6 +39,7 @@ public class ClientHandler extends Thread{
         }
         ch.removeUser(this);
         //handler.closeStream();
+
     }
 
     public String toString(){
