@@ -22,8 +22,9 @@ public class Main {
             server.bind(addr);
 
             while(true){
+                System.out.println("Escuchando..");
                 s = server.accept();
-
+                System.out.println("Conexion aceptada");
                 ObjectOutputStream oos = new ObjectOutputStream(s.getOutputStream());
                 ObjectInputStream ois = new ObjectInputStream(s.getInputStream());
                 if(clients.size() < 10){
