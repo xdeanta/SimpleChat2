@@ -32,9 +32,9 @@ public class ClientHandler extends Thread{
     public void run(){
 
         try {
-            User u = (User)ios.readObject();
+            TUser u = (TUser)ios.readObject();
             Message m = null;
-            ClientAuth.checkUser(u);
+            ClientAuth.checkUser((User)u);
             if(u.isAuthorized()){
                 oos.writeBoolean(true);
                 m= new Message("Server", "Bienvenido " + u.getUsername());

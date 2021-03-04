@@ -2,6 +2,7 @@ package com.simplechat2.client;
 
 
 import com.simplechat2.common.Message;
+import com.simplechat2.common.TUser;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
