@@ -23,7 +23,7 @@ public class Channel {
 
     }
 
-    public void broadcastMessage(){
+    public synchronized void broadcastMessage(){
         ClientHandler ch;
         for(int i = 0; i < clients.size(); i++){
             ch=clients.get(i);
