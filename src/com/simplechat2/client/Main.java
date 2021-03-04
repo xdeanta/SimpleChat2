@@ -1,44 +1,55 @@
 package com.simplechat2.client;
 
-import com.simplechat2.client.controller.ClientSocket;
-import com.simplechat2.client.controller.Listener;
-import com.simplechat2.common.IOStream;
-import com.simplechat2.client.model.CClient;
+
 import com.simplechat2.common.Message;
 
-import javax.swing.*;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.InetSocketAddress;
+import java.net.Socket;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args){
+        String usr, pass,msg;
+        Socket sock;
+        ObjectInputStream ois;
+        ObjectOutputStream oos;
+        boolean logged;
+        Message m;
         Scanner sc = new Scanner(System.in);
-        String usr, pass, msg="";
-        CClient c;
-        Listener ls;
-        ClientSocket cs = ClientSocket.getSocket("192.168.56.2", 7500);
-        //IOStream IOHandler = IOStream.createIO(cs.getIs(),cs.getOs());
-        IOStream IOHandler = new IOStream(cs.getIs(),cs.getOs());
-        ls = new Listener(IOHandler);
-        boolean connected;
-        usr = JOptionPane.showInputDialog("Ingrese su usuario");
-        pass = JOptionPane.showInputDialog("Ingrese su contraseña");
-        /*System.out.println("Usuario: " + usr);
-        System.out.println("Contraseña: " + pass);*/
-        c = new CClient(usr,pass);
-        Message m=null;
-        IOHandler.sendObject(c);
-        connected=(Boolean) IOHandler.ReceiveObject();
-        if(connected){
+        System.out.print("Usuario: ");
+        usr=sc.nextLine();
+        System.out.print("\nContraseña: ");
+        pass=sc.nextLine();
+        System.out.println("");
+        Client c = new Client(usr,pass);
+        try{
+            sock=new Socket("192.168.56.2",7500);
+            oos = new ObjectOutputStream(sock.getOutputStream());
+            ois = new ObjectInputStream(sock.getInputStream());
             System.out.println("Conectado");
-            ls.start();
-            while(!msg.equals("bye")){
-                msg=sc.nextLine();
-                m = new Message(c, msg);
-                IOHandler.sendObject(m);
+            oos.writeObject(c);
+            logged=ois.readBoolean();
+            if(logged){
+                m=(Message) ois.readObject();
+                System.out.println(m);
+                while(true){
+                    m=null;
+                    msg=sc.nextLine();
+                    m = new Message(c.getUsername(),msg);
+                    oos.writeObject(m);
+                    if(msg.equals(".bye")){
+                        break;
+                    }
+                }
+                sock.close();
             }
-            //ls.interrupt();
-        }else{
-            System.out.println("La conexión fallo");
+        }catch (IOException e){
+            e.printStackTrace();
+        }catch (ClassNotFoundException e2){
+            e2.printStackTrace();
         }
     }
 }
