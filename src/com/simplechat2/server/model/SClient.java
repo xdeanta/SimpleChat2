@@ -11,7 +11,4 @@ public class SClient extends Client {
         this.ios=ios;
     }
 
-    public void receiveMessage(Message m){
-        ios.sendObject(m);
-    }
 }

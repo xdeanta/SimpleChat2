@@ -29,18 +29,15 @@ public class ServerListener extends Thread{
             connected=ca.validateUser(c);
             if(connected){
                 System.out.println("Cliente conectado");
-                clh = new ClientHandler(c,handler,ch);
-                ch.joinUser(clh.getClient());
+                clh = new ClientHandler(c,ss.getSocket(),ch);
+                ch.joinUser(clh);
                 clh.start();
+
             }else{
                 System.out.println("Conexion rechazada");
                 ss.closeSocket();
             }
             handler.sendObject(connected);
-            clh = null;
-            c=null;
-            handler=null;
-            ca=null;
         }
     }
 }
