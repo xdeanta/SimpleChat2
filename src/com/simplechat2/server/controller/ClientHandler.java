@@ -13,7 +13,7 @@ public class ClientHandler extends Thread{
     private boolean disconnect;
 
     public ClientHandler (Client c, IOStream ios, Channel ch){
-        client = new SClient(c.getUsername(),c.getPassword());
+        client = new SClient(c.getUsername(),c.getPassword(),ios);
         this.ch=ch;
         handler = ios;
         disconnect=false;
@@ -29,20 +29,20 @@ public class ClientHandler extends Thread{
         ch.broadcastMessage();
     }
 
-    public void receiveMessage(Message m){
-        handler.sendObject(m);
-    }
-
     public void run(){
         while(!disconnect){
             sendMessage();
         }
-        ch.removeUser(this);
+        ch.removeUser(client);
         //handler.closeStream();
 
     }
 
     public String toString(){
         return "Cliente: " + client.getUsername();
+    }
+
+    public SClient getClient() {
+        return client;
     }
 }

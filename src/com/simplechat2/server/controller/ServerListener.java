@@ -30,7 +30,7 @@ public class ServerListener extends Thread{
             if(connected){
                 System.out.println("Cliente conectado");
                 clh = new ClientHandler(c,handler,ch);
-                ch.joinUser(clh);
+                ch.joinUser(clh.getClient());
                 clh.start();
             }else{
                 System.out.println("Conexion rechazada");

@@ -9,36 +9,30 @@ import java.util.ArrayList;
 public class Channel {
     private static final String name = "#main";
     private ArrayList<Message> msgs;
-    private ArrayList<ClientHandler> clients;
+    private ArrayList<SClient> clients;
 
     public Channel(){
         msgs = new ArrayList<>();
         clients = new ArrayList<>();
     }
 
-    public synchronized void joinUser(ClientHandler ch){
-
+    public synchronized void joinUser(SClient ch){
         clients.add(ch);
-        System.out.println(clients);
-
     }
 
-    public synchronized void broadcastMessage(){
-        ClientHandler ch;
+    public void broadcastMessage(){
+        SClient ch;
         for(int i = 0; i < clients.size(); i++){
             ch=clients.get(i);
             ch.receiveMessage(msgs.get(msgs.size()-1));
         }
     }
 
-    public synchronized void removeUser(ClientHandler ch){
-
+    public synchronized void removeUser(SClient ch){
         clients.remove(ch);
-        System.out.println(clients);
     }
 
     public synchronized void addMessage(Message m){
-
         msgs.add(m);
         System.out.println(msgs);
     }
