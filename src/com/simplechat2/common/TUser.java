@@ -2,7 +2,7 @@ package com.simplechat2.common;
 
 import java.io.Serializable;
 
-public abstract class TUser implements Serializable {
+public class TUser implements Serializable {
     private String username;
     private boolean authorized;
     private String password;

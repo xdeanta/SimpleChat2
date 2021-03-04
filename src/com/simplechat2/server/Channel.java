@@ -1,12 +1,13 @@
 package com.simplechat2.server;
 
 import com.simplechat2.common.Message;
+import com.simplechat2.common.TUser;
 
 import java.util.ArrayList;
 
 public class Channel {
     private String name;
-    private ArrayList<User> users;
+    private ArrayList<TUser> users;
     private ArrayList<Message> msgs;
     private ArrayList<ClientHandler> tclients;
 
@@ -17,11 +18,11 @@ public class Channel {
         this.tclients=tclients;
     }
 
-    public synchronized void addUser(User u){
+    public synchronized void addUser(TUser u){
         users.add(u);
     }
 
-    public synchronized void removeUser(User u){
+    public synchronized void removeUser(TUser u){
         users.remove(u);
     }
 

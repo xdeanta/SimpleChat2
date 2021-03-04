@@ -1,5 +1,7 @@
 package com.simplechat2.server;
 
+import com.simplechat2.common.TUser;
+
 import java.sql.*;
 
 public class ClientAuth {
@@ -14,7 +16,7 @@ public class ClientAuth {
         }
     }
 
-    public static void checkUser(User u){
+    public static void checkUser(TUser u){
         try {
             PreparedStatement pst = conx.prepareStatement("select id from users where username=? and password=?");
             pst.setString(1,u.getUsername());

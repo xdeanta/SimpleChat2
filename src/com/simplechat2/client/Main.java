@@ -25,7 +25,7 @@ public class Main {
         System.out.print("\nContraseña: ");
         pass=sc.nextLine();
         System.out.println("");
-        Client c = new Client(usr,pass);
+        TUser c = new Client(usr,pass);
         try{
             sock=new Socket("192.168.56.2",7500);
             oos = new ObjectOutputStream(sock.getOutputStream());
