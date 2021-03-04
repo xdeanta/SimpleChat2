@@ -36,7 +36,7 @@ public class Main {
                 m = new Message(c, msg);
                 IOHandler.sendObject(m);
             }
-            ls.interrupt();
+            //ls.interrupt();
         }else{
             System.out.println("La conexión fallo");
         }

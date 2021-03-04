@@ -23,6 +23,8 @@ public class Listener extends Thread{
         while(true){
             msg=(Message) input.ReceiveObject();
             System.out.println(msg);
+            if(msg.getMessage().equals("bye"))
+                break;
         }
     }
 }
