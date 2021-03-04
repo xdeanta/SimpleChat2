@@ -16,7 +16,7 @@ public class Channel {
         clients = new ArrayList<>();
     }
 
-    public void joinUser(ClientHandler ch){
+    public synchronized void joinUser(ClientHandler ch){
 
         clients.add(ch);
         System.out.println(clients);

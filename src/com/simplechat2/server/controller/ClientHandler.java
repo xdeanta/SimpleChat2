@@ -19,7 +19,7 @@ public class ClientHandler extends Thread{
         disconnect=false;
     }
 
-    public synchronized void sendMessage(){
+    public void sendMessage(){
         Message m;
         m=(Message) handler.ReceiveObject();
         if(m.getMessage().equals("bye")){
@@ -29,7 +29,7 @@ public class ClientHandler extends Thread{
         ch.broadcastMessage();
     }
 
-    public synchronized void receiveMessage(Message m){
+    public void receiveMessage(Message m){
         handler.sendObject(m);
     }
 
