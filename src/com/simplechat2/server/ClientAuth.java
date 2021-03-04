@@ -7,7 +7,7 @@ import java.sql.*;
 public class ClientAuth {
     private static Connection conx;
 
-    public static void getConnection(User u){
+    public static void getConnection(){
         String url = "jdbc:sqlite:/home/xavier/db/users.db";
         try {
             conx = DriverManager.getConnection(url);
@@ -17,6 +17,7 @@ public class ClientAuth {
     }
 
     public static void checkUser(TUser u){
+        getConnection();
         try {
             PreparedStatement pst = conx.prepareStatement("select id from users where username=? and password=?");
             pst.setString(1,u.getUsername());

@@ -19,13 +19,14 @@ public class Main {
         ObjectOutputStream oos;
         boolean logged;
         Message m;
+        Listener ls;
         Scanner sc = new Scanner(System.in);
         System.out.print("Usuario: ");
         usr=sc.nextLine();
         System.out.print("\nContraseña: ");
         pass=sc.nextLine();
         System.out.println("");
-        TUser c = new Client(usr,pass);
+        TUser c = new TUser(usr,pass);
         try{
             sock=new Socket("192.168.56.2",7500);
             oos = new ObjectOutputStream(sock.getOutputStream());
@@ -36,16 +37,26 @@ public class Main {
             if(logged){
                 m=(Message) ois.readObject();
                 System.out.println(m);
+                ls = new Listener(ois,sock,c.getUsername());
+                ls.start();
                 while(true){
                     m=null;
                     msg=sc.nextLine();
                     m = new Message(c.getUsername(),msg);
                     oos.writeObject(m);
                     if(msg.equals(".bye")){
+                        ls.setExit(true);
+                        try{
+                            ls.join();
+                        }catch (InterruptedException e){
+                            e.printStackTrace();
+                        }
                         break;
+
                     }
                 }
-                sock.close();
+                //sock.close();
+                oos.close();
             }
         }catch (IOException e){
             e.printStackTrace();

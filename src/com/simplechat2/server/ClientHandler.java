@@ -44,10 +44,10 @@ public class ClientHandler extends Thread{
                     m=null;
                     m=(Message) ios.readObject();
                     if(m.getMessage().equals(".bye")){
-                        ch.removeUser(u);
-                        m = new Message("Server", u.getUsername() + "has left the chat.");
+                        m = new Message("Server", u.getUsername() + " has left the chat.");
                         ch.addMessage(m);
                         ch.broadcastMessage();
+                        ch.removeUser(u);
                         break;
                     }else{
                         ch.addMessage(m);
