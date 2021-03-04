@@ -17,7 +17,9 @@ public class Channel {
     }
 
     public void joinUser(ClientHandler ch){
+
         clients.add(ch);
+        System.out.println(clients);
     }
 
     public void broadcastMessage(){
@@ -29,10 +31,14 @@ public class Channel {
     }
 
     public synchronized void removeUser(ClientHandler ch){
+
         clients.remove(ch);
+        System.out.println(clients);
     }
 
     public synchronized void addMessage(Message m){
+
         msgs.add(m);
+        System.out.println(msgs);
     }
 }

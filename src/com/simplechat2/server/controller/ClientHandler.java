@@ -24,7 +24,6 @@ public class ClientHandler extends Thread{
         m=(Message) handler.ReceiveObject();
         if(m.getMessage().equals("bye")){
             disconnect=true;
-            ch.removeUser(this);
         }
         ch.addMessage(m);
         ch.broadcastMessage();
@@ -38,6 +37,11 @@ public class ClientHandler extends Thread{
         while(!disconnect){
             sendMessage();
         }
+        ch.removeUser(this);
         //handler.closeStream();
+    }
+
+    public String toString(){
+        return "Cliente: " + client.getUsername();
     }
 }
