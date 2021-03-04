@@ -38,6 +38,7 @@ public class ServerListener extends Thread{
                 ss.closeSocket();
             }
             handler.sendObject(connected);
+            handler.closeStream();
         }
     }
 }
