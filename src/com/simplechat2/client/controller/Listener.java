@@ -14,6 +14,10 @@ public class Listener extends Thread{
         input = new IOStream(in,out);
     }
 
+    public Listener(IOStream input){
+        this.input=input;
+    }
+
     public void run(){
         Message msg;
         while(true){

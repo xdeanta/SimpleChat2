@@ -18,7 +18,7 @@ public class Main {
         ClientSocket cs = ClientSocket.getSocket("192.168.56.2", 7500);
         //IOStream IOHandler = IOStream.createIO(cs.getIs(),cs.getOs());
         IOStream IOHandler = new IOStream(cs.getIs(),cs.getOs());
-        ls = new Listener(cs.getIs(),cs.getOs());
+        ls = new Listener(IOHandler);
         boolean connected;
         usr = JOptionPane.showInputDialog("Ingrese su usuario");
         pass = JOptionPane.showInputDialog("Ingrese su contraseña");
@@ -33,7 +33,7 @@ public class Main {
             ls.start();
             while(!msg.equals("bye")){
                 msg=sc.nextLine();
-                m=new Message(c,msg);
+                m = new Message(c, msg);
                 IOHandler.sendObject(m);
             }
             ls.interrupt();
