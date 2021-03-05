@@ -8,7 +8,7 @@ public class ClientAuth {
     private static Connection conx;
 
     public static void getConnection(){
-        String url = "jdbc:sqlite:/home/xavier/db/users.db";
+        String url = "jdbc:sqlite:db/users.db";
         try {
             conx = DriverManager.getConnection(url);
         }catch (SQLException e){
