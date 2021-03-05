@@ -24,6 +24,7 @@ public class ClientAuth {
             pst.setString(2,u.getPassword());
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
+                System.out.println("Autorizado");
                 u.setAuthorized(true);
                 u.setPassword("");
             }
