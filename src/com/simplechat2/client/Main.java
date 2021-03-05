@@ -55,8 +55,11 @@ public class Main {
 
                     }
                 }
-                //sock.close();
                 oos.close();
+                ois.close();
+                sock.close();
+            }else{
+                System.out.println("Conexion rechazada");
             }
         }catch (IOException e){
             e.printStackTrace();

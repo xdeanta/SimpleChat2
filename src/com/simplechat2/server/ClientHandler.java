@@ -54,8 +54,13 @@ public class ClientHandler extends Thread{
                         ch.broadcastMessage();
                     }
                 }
+                ios.close();
+                oos.close();
+                s.close();
             }else{
                 oos.writeBoolean(false);
+                ios.close();
+                oos.close();
                 s.close();
             }
         }catch (IOException e){
