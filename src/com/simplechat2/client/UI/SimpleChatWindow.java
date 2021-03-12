@@ -81,11 +81,16 @@ public class SimpleChatWindow extends JFrame{
         btnEnviar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Message m;
                 String str = txtMsg.getText();
                 if(str.startsWith("/")){
                     str=str.replace('/',' ');
                     str=str.trim();
                     if(str.equals("quit")){
+                        //str = ".bye";
+                        m = new Message(c.getUsername(),".bye");
+                        sh.sendObject(m);
+                        ls.setExit(true);
                         try{
                             ls.join();
                         }catch(InterruptedException ex){
@@ -94,7 +99,7 @@ public class SimpleChatWindow extends JFrame{
                         System.exit(0);
                     }
                 }
-                Message m = new Message(c.getUsername(),str);
+                m = new Message(c.getUsername(),str);
                 System.out.println("Enviando: " + m);
                 sh.sendObject(m);
                 System.out.println("Enviado");
@@ -106,15 +111,25 @@ public class SimpleChatWindow extends JFrame{
         txtMsg.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Message m;
                 String str = txtMsg.getText();
                 if(str.startsWith("/")){
                     str=str.replace('/',' ');
                     str=str.trim();
                     if(str.equals("quit")){
+                        //str = ".bye";
+                        m = new Message(c.getUsername(),".bye");
+                        sh.sendObject(m);
+                        ls.setExit(true);
+                        try{
+                            ls.join();
+                        }catch(InterruptedException ex){
+                            JOptionPane.showMessageDialog(null,"Hubo un error al cerrar el Listener");
+                        }
                         System.exit(0);
                     }
                 }
-                Message m = new Message(c.getUsername(),str);
+                m = new Message(c.getUsername(),str);
                 System.out.println("Enviando: " + m);
                 sh.sendObject(m);
                 System.out.println("Enviado");
