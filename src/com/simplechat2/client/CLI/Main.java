@@ -1,4 +1,4 @@
-package com.simplechat2.client;
+package com.simplechat2.client.CLI;
 
 
 import com.simplechat2.common.Message;
@@ -7,7 +7,6 @@ import com.simplechat2.common.TUser;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.util.Scanner;
 

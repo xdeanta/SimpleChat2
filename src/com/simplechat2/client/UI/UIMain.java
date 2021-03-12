@@ -1,15 +1,11 @@
-package com.simplechat2.client;
+package com.simplechat2.client.UI;
 
+import com.simplechat2.client.CLI.Listener;
 import com.simplechat2.client.UI.Login;
-import com.simplechat2.common.Message;
-import com.simplechat2.common.TUser;
+import com.simplechat2.client.UI.SocketHandler;
 
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.net.Socket;
-import java.net.SocketException;
-import java.util.Scanner;
 
 public class UIMain {
     public static void main(String[] args){

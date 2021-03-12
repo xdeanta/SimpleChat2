@@ -1,4 +1,4 @@
-package com.simplechat2.client;
+package com.simplechat2.client.CLI;
 
 import com.simplechat2.common.Message;
 

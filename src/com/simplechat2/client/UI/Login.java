@@ -1,6 +1,5 @@
 package com.simplechat2.client.UI;
 
-import com.simplechat2.client.SocketHandler;
 import com.simplechat2.common.TUser;
 
 import javax.swing.*;

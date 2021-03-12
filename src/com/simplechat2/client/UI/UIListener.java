@@ -1,10 +1,8 @@
-package com.simplechat2.client;
+package com.simplechat2.client.UI;
 
 import com.simplechat2.common.Message;
 
 import javax.swing.*;
-import java.awt.*;
-import java.io.IOException;
 
 public class UIListener extends Thread{
     private JTextArea txtMsg;

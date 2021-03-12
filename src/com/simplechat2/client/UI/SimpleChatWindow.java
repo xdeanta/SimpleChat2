@@ -1,7 +1,5 @@
 package com.simplechat2.client.UI;
 
-import com.simplechat2.client.SocketHandler;
-import com.simplechat2.client.UIListener;
 import com.simplechat2.common.Message;
 import com.simplechat2.common.TUser;
 
@@ -88,6 +86,11 @@ public class SimpleChatWindow extends JFrame{
                     str=str.replace('/',' ');
                     str=str.trim();
                     if(str.equals("quit")){
+                        try{
+                            ls.join();
+                        }catch(InterruptedException ex){
+                            JOptionPane.showMessageDialog(null,"Hubo un error al cerrar el Listener");
+                        }
                         System.exit(0);
                     }
                 }

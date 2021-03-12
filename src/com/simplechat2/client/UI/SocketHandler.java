@@ -1,4 +1,4 @@
-package com.simplechat2.client;
+package com.simplechat2.client.UI;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
