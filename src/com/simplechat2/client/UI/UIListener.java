@@ -33,6 +33,6 @@ public class UIListener extends Thread{
             if(m.getMessage().matches("^"+usr))
                 break;
         }
-        sh.closeConnection();
+        //sh.closeConnection();
     }
 }
