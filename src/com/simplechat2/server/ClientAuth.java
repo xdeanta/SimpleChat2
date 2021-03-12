@@ -8,7 +8,7 @@ public class ClientAuth {
     private static Connection conx;
 
     public static void getConnection(){
-        String url = "jdbc:sqlite:/home/xavier/db/users.db";
+        String url = "jdbc:sqlite:db/users.db";
         try {
             conx = DriverManager.getConnection(url);
         }catch (SQLException e){
@@ -24,6 +24,7 @@ public class ClientAuth {
             pst.setString(2,u.getPassword());
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
+                System.out.println("Autorizado");
                 u.setAuthorized(true);
                 u.setPassword("");
             }
